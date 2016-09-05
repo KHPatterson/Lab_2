@@ -1,8 +1,9 @@
 #include "ReadFile.h"
 #include <iostream>
 #include <string>
+using namespace std; 
 
-ReadFile* createReadFile(const char* file_name)
+ReadFile* ReadFile::createReadFile(const char* file_name)
 {
    ReadFile* rf = new ReadFile;
 
@@ -13,18 +14,18 @@ ReadFile* createReadFile(const char* file_name)
    return rf;
 }
 
-void destroyReadFile(ReadFile* rf)
+ReadFile::~ReadFile();
 {
    close(rf);
    delete rf;
 }
 
-bool eof(ReadFile* rf)
+bool ReadFile::eof()
 {
    return rf->_eof;
 }
 
-void close(ReadFile* rf)
+void ReadFile::close()
 {
    if (!rf->closed)
    {
@@ -33,7 +34,7 @@ void close(ReadFile* rf)
    }
 }
 
-String* readLine(ReadFile* rf)
+String* ReadFile::readLine()
 {
    if (rf->closed) return NULL;
    if (rf->_eof) return NULL;

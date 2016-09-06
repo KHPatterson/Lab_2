@@ -11,11 +11,12 @@ class ReadFile
 		
 	public:
 		ifstream input_file;
+	private:
 		bool _eof;
 		bool closed;
-		
 		ReadFile* rf;
 		
+	public:	
 	 	ReadFile();  //Constructor.
 		~ReadFile();  //Deconstructor.
 

@@ -6,15 +6,24 @@
 #include <fstream>
 using namespace std;
 
-struct WriteFile
+class WriteFile
 {
-   ofstream output_file;
-   bool closed;
-};
+	private: 
+	
+		ofstream output_file; // we do not want the user to CHANGE the write file, or the file the data is being saved in. We only want the
+										// user to be able to change what data is being SAVED 
+		bool closed;	
+		WriteFile* line;
+		
+	public: 
+		
+		WriteFile();   // constructor
+		~WriteFile();  // destructor 
 
-WriteFile* createWriteFile(const char* file_name);
-void destroyWriteFile(WriteFile* wf);
-void writeLine(WriteFile* wf, String* line);
-void close(WriteFile* wf);
+		WriteFile* createWriteFile(const char* fileName);
+		void destroyWriteFile();
+		void writeLine();
+		void close();		
+}; 
 
 #endif
